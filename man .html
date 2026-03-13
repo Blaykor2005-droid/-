@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>منصة ثانوية أبي بكر بالقايد</title>
+
+<style>
+
+:root{
+--green:#0a2e23;
+--gold:#d4af37;
+--glass:rgba(255,255,255,0.08);
+--border:rgba(255,255,255,0.15);
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI;
+}
+
+body{
+
+background:
+radial-gradient(circle at 20% 20%, rgba(212,175,55,0.15), transparent),
+radial-gradient(circle at 80% 40%, rgba(212,175,55,0.08), transparent),
+linear-gradient(135deg,#051a14,#0a2e23,#102f26);
+
+color:white;
+min-height:100vh;
+overflow-x:hidden;
+
+}
+
+/* بريق الخلفية */
+
+body::after{
+
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+
+background-image:
+radial-gradient(2px 2px at 20px 30px,#fff,transparent),
+radial-gradient(2px 2px at 40px 70px,#fff,transparent),
+radial-gradient(1px 1px at 90px 40px,#fff,transparent),
+radial-gradient(1px 1px at 130px 80px,#fff,transparent);
+
+opacity:0.2;
+z-index:-1;
+
+}
+
+/* النافبار */
+
+.navbar{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:20px 6%;
+
+background:rgba(0,0,0,0.4);
+backdrop-filter:blur(20px);
+
+border-bottom:1px solid var(--border);
+
+}
+
+.logo{
+
+font-size:22px;
+color:var(--gold);
+font-weight:bold;
+
+}
+
+.nav-links{
+
+display:flex;
+gap:30px;
+list-style:none;
+
+}
+
+.nav-links a{
+
+color:#ddd;
+text-decoration:none;
+transition:.3s;
+
+}
+
+.nav-links a:hover{
+
+color:var(--gold);
+
+}
+
+/* الصفحة */
+
+.container{
+
+display:flex;
+justify-content:center;
+align-items:center;
+padding:50px 20px;
+
+}
+
+/* البطاقة */
+
+.card{
+
+width:100%;
+max-width:500px;
+
+background:var(--glass);
+
+border:1px solid var(--border);
+
+backdrop-filter:blur(25px);
+
+padding:40px;
+
+border-radius:20px;
+
+box-shadow:0 20px 40px rgba(0,0,0,0.4);
+
+}
+
+h2{
+
+text-align:center;
+color:var(--gold);
+margin-bottom:10px;
+
+}
+
+.subtitle{
+
+text-align:center;
+font-size:14px;
+color:#aaa;
+margin-bottom:30px;
+
+}
+
+/* الحقول */
+
+.input-group{
+
+margin-bottom:20px;
+
+}
+
+.input-group label{
+
+display:block;
+margin-bottom:8px;
+font-size:14px;
+color:#f1d592;
+
+}
+
+input,textarea{
+
+width:100%;
+padding:12px;
+
+border-radius:10px;
+
+border:1px solid var(--border);
+
+background:rgba(255,255,255,0.05);
+
+color:white;
+
+outline:none;
+
+}
+
+input:focus,textarea:focus{
+
+border-color:var(--gold);
+
+box-shadow:0 0 8px rgba(212,175,55,0.4);
+
+}
+
+/* الزر */
+
+button{
+
+width:100%;
+
+padding:14px;
+
+border:none;
+
+border-radius:12px;
+
+background:linear-gradient(135deg,var(--gold),#b8962e);
+
+color:#052018;
+
+font-weight:bold;
+
+cursor:pointer;
+
+margin-top:10px;
+
+}
+
+/* زر انستغرام */
+
+.insta{
+
+display:flex;
+
+justify-content:center;
+
+margin-top:25px;
+
+}
+
+.insta a{
+
+background:#e1306c;
+
+padding:10px 20px;
+
+border-radius:10px;
+
+color:white;
+
+text-decoration:none;
+
+}
+
+/* الفوتر */
+
+.footer{
+
+text-align:center;
+
+margin-top:40px;
+
+font-size:14px;
+
+color:#aaa;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+<div class="logo">ثانوية أبي بكر بالقايد</div>
+
+<ul class="nav-links">
+<li><a href="#">الرئيسية</a></li>
+<li><a href="#">المنصة</a></li>
+<li><a href="#">الشكاوي</a></li>
+<li><a href="#">اتصل بنا</a></li>
+</ul>
+
+</header>
+
+
+<div class="container">
+
+<div class="card">
+
+<h2>تسجيل الدخول</h2>
+
+<p class="subtitle">
+منصة التعليم الرقمية
+</p>
+
+<div class="input-group">
+
+<label>البريد الإلكتروني</label>
+
+<input type="email" id="email">
+
+</div>
+
+<div class="input-group">
+
+<label>رمز الدخول</label>
+
+<input type="password" id="password">
+
+</div>
+
+<button onclick="login()">تسجيل الدخول</button>
+
+<hr style="margin:30px 0;border-color:rgba(255,255,255,0.1)">
+
+<h2>إرسال شكوى</h2>
+
+<div class="input-group">
+
+<label>الرسالة</label>
+
+<textarea id="msg"></textarea>
+
+</div>
+
+<button onclick="sendMail()">إرسال</button>
+
+<div class="insta">
+
+<a href="https://www.instagram.com/2x_dororo?igsh=Y2tmYjJncHlwcTBo&utm_source=qr" target="_blank">
+Instagram
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="footer">
+
+من هذه الصفحة من طرف التلميذ بن هدية محمد  
+<br>
+معلومات الاتصال: 0696097899
+
+</div>
+
+
+<script>
+
+function login(){
+
+let pass=document.getElementById("password").value;
+
+if(pass==="JN72R8N8117"){
+
+alert("مرحبًا بالإدارة");
+
+}else{
+
+alert("تم تسجيل دخول التلميذ");
+
+}
+
+}
+
+function sendMail(){
+
+let msg=document.getElementById("msg").value;
+
+window.location.href=
+"mailto:Scalding2005@gmail.com?subject=شكوى&body="+msg;
+
+}
+
+</script>
+
+</body>
+</html>
